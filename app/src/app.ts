@@ -17,16 +17,21 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 app.post("/", (req: Request, res: Response) => {
+  const cursos = {
+    tecnologia : "teste tecnologia",
+    gestao: "teste gestão",
+    saude: "teste saude"
+  }
   console.log(req.body);
   const agent = new WebhookClient({ request: req, response: res });
+  function displayCursosDireta( agent: WebhookClient) {
+    const areasCursos = agent.parameters["areas-cursos"];
+    agent.add(cursos[areasCursos]);
+  }
+
   function displayCursos(agent: WebhookClient) {
     const query = agent.query;
     const areasCursos = agent.parameters["areas-cursos"];
-    const cursos = {
-      tecnologia : "teste tecnologia",
-      gestao: "teste gestão",
-      saude: "teste saude"
-    }
 
     if (!areasCursos) {
       agent.add("Qual delas?");
@@ -36,5 +41,6 @@ app.post("/", (req: Request, res: Response) => {
   }
   let intentMap = new Map();
   intentMap.set("conhecerCursos - yes", displayCursos);
+  intentMap.set("conhecerCursosInfoDireta", displayCursosDireta);
   agent.handleRequest(intentMap);
 });
