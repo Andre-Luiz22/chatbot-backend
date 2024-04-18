@@ -18,9 +18,14 @@ app.use(morgan("dev"));
 
 app.post("/", (req: Request, res: Response) => {
   console.log(req.body);
-  const agent = new WebhookClient({ request:req, response:res });
+  const agent = new WebhookClient({ request: req, response: res });
   function displayCursos(agent: WebhookClient) {
-    agent.add("FOI");
+    const query = agent.query;
+    if (query === "sim") {
+      agent.add("Qual delas ?");
+    } else if (query === "tecnologia") {
+      agent.add("Os cursos são Esses aqui");
+    }
   }
   let intentMap = new Map();
   intentMap.set("conhecerCursos - yes", displayCursos);
