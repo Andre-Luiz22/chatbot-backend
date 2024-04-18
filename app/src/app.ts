@@ -7,6 +7,8 @@ dotenv.config();
 
 export const app = express();
 
+const bullet = String.fromCharCode(0x2022);
+
 const options: cors.CorsOptions = {
   origin: "*",
   methods: "GET, POST",
@@ -19,7 +21,7 @@ app.use(morgan("dev"));
 app.post("/", (req: Request, res: Response) => {
   const cursos = {
     tecnologia : "Em tecnologia, as unidades de BH da Proz ofertam o curso técnico em Desenvolvimento de Sistemas",
-    gestao: "Em gestão, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \nAdministração;",
+    gestao: `Em gestão, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \n${bullet}Administração;`,
     saude: "Em saúde, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \nEnfermagem; \nRadiologia; \nEstética;"
   }
   console.log(req.body);
