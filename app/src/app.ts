@@ -20,9 +20,9 @@ app.use(morgan("dev"));
 
 app.post("/", (req: Request, res: Response) => {
   const cursos = {
-    tecnologia : "Em tecnologia, as unidades de BH da Proz ofertam o curso técnico em Desenvolvimento de Sistemas",
-    gestao: `Em gestão, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \n${bullet}Administração;`,
-    saude: "Em saúde, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \nEnfermagem; \nRadiologia; \nEstética;"
+    tecnologia : `Em tecnologia, as unidades de BH da Proz ofertam o curso técnico em Desenvolvimento de Sistemas`,
+    gestao: `Em gestão, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \n${bullet} Administração;`,
+    saude: `Em saúde, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \n${bullet} Enfermagem; \n${bullet} Radiologia; \n${bullet} Estética;`
   }
   console.log(req.body);
   const agent = new WebhookClient({ request: req, response: res });
