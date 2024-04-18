@@ -21,10 +21,17 @@ app.post("/", (req: Request, res: Response) => {
   const agent = new WebhookClient({ request: req, response: res });
   function displayCursos(agent: WebhookClient) {
     const query = agent.query;
-    if (query === "sim") {
-      agent.add("Qual delas ?");
-    } else if (query === "tecnologia") {
-      agent.add("Os cursos são Esses aqui");
+    const areasCursos = agent.parameters["areas-cursos"];
+    const cursos = {
+      tecnologia : "teste tecnologia",
+      gestao: "teste gestão",
+      saude: "teste saude"
+    }
+
+    if (!areasCursos) {
+      agent.add("Qual delas?");
+    } else if (areasCursos) {
+      agent.add(cursos[areasCursos]);
     }
   }
   let intentMap = new Map();
