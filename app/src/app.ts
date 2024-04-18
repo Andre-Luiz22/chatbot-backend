@@ -18,7 +18,7 @@ app.use(morgan("dev"));
 
 app.post("/", (req: Request, res: Response) => {
   console.log(req.body);
-  const agent = new WebhookClient({ req, res });
+  const agent = new WebhookClient({ request:req, response:res });
   function displayCursos(agent: WebhookClient) {
     agent.add("FOI");
   }
