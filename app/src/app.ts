@@ -24,7 +24,5 @@ app.post("/", (req: Request, res: Response) => {
   }
   let intentMap = new Map();
   intentMap.set("conhecerCursos - yes", displayCursos);
-  agent.handleRequest(intentMap)
-
-  res.status(200).json(req.body);
+  agent.handleRequest(intentMap);
 });
