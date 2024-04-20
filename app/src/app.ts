@@ -61,6 +61,6 @@ app.post("/", (req: Request, res: Response) => {
   let intentMap = new Map();
   intentMap.set("conhecerCursos - yes", displayCursos);
   intentMap.set("conhecerCursosInfoDireta", displayCursosDireta);
-  intentMap.set("cursosInfo", displayCursoInfo);
+  intentMap.set("cursoInfo", displayCursoInfo);
   agent.handleRequest(intentMap);
 });
