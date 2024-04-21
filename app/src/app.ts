@@ -21,18 +21,52 @@ app.use(morgan("dev"));
 app.post("/", (req: Request, res: Response) => {
   const cursos = {
     tecnologia: `Em tecnologia, as unidades de BH da Proz ofertam o curso técnico em Desenvolvimento de Sistemas`,
-    gestao: `Em gestão, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \n${bullet} Administração; \n Recursos Humanos; \n Segurança do Trabalho; \n Logística`,
+    gestao: `Em gestão, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \n${bullet} Administração; \n Recursos Humanos; \n Segurança do Trabalho`,
     saude: `Em saúde, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \n${bullet} Enfermagem; \n${bullet} Radiologia; \n${bullet} Estética;`,
   };
 
   const cursosInfo = {
     ads: {
       title: "Técnico em Desenvolvimento de Sistemas",
-      info: `O Técnico em Desenvolviemnto de Sistemas possui uma carga horária de 1200 horas, equivalentes a 2 anos de aulas 20% online e 80% presenciais, com 8 módulos, 16 disciplinas.`,
+      info: `\nCarga horária: 1200 horas, equivalentes a 2 anos de aulas. \nModalidade: 20% online e 80% presencial. \nQuantidade de módulos: 8, totalizando 16 disciplinas. \nValor da mensalidade: R$XXX,XX`,
       modulos: `Os módulos são: \n${bullet} Tecnologia da informação; \n${bullet} Programação de Sistemas; \n${bullet} Análise de Sitemas; \n${bullet} Desenvolvimento de Sistemas para celulares; \n${bullet}  Programação Front-end; \n${bullet} Programação back-end; \n${bullet} Administração de Redes; \n${bullet} Qualidade de Software.`,
     },
 
-    enf: "O Técnico em Enfermagem possui uma carga horária de 1680 horas, equivalentes a 2 anos de aulas 20% online e 80% presenciais, com 8 módulos, 16 disciplinas. Dessa carga horária, 480 horas correspondem a estágios obrigatórios para a formação do aluno.\nOs módulos presentes são: \nEnfermagem na atenção à saúde do adulto, Enfermagem na atenção domiciliar, Enfermagem na clínica cirúrgica, Enfermagem na saúde coletiva, Enfermagem na saúde da mulher, do homem, da criança e do adolescente, Assistência ao paciente crítico adulto, Assistência ao paciente crítico neonatal e pediátrico e Enfermagem na qualidade e segurança do paciente.",
+    adm: {
+      title: "Técnico em Administração",
+      info: `\nCarga horária: 1200 horas, equivalentes a 2 anos de aulas. \nModalidade: 20% online e 80% presencial. \nQuantidade de módulos: 8, totalizando 16 disciplinas. \nValor da mensalidade: R$XXX,XX`,
+      modulos: `Os módulos são: \n${bullet} Tecnologia da informação; \n${bullet} Programação de Sistemas; \n${bullet} Análise de Sitemas; \n${bullet} Desenvolvimento de Sistemas para celulares; \n${bullet}  Programação Front-end; \n${bullet} Programação back-end; \n${bullet} Administração de Redes; \n${bullet} Qualidade de Software.`,
+    },
+
+    rh: {
+      title: "Técnico em Recursos Humanos",
+      info: `\nCarga horária: 1200 horas, equivalentes a 2 anos de aulas. \nModalidade: 20% online e 80% presencial. \nQuantidade de módulos: 8, totalizando 16 disciplinas. \nValor da mensalidade: R$XXX,XX`,
+      modulos: `Os módulos são: \n${bullet} Tecnologia da informação; \n${bullet} Programação de Sistemas; \n${bullet} Análise de Sitemas; \n${bullet} Desenvolvimento de Sistemas para celulares; \n${bullet}  Programação Front-end; \n${bullet} Programação back-end; \n${bullet} Administração de Redes; \n${bullet} Qualidade de Software.`,
+    },
+
+    est: {
+      title: "Técnico em Estética",
+      info: `\nCarga horária: 1200 horas, equivalentes a 2 anos de aulas. \nModalidade: 20% online e 80% presencial. \nQuantidade de módulos: 8, totalizando 16 disciplinas. \nValor da mensalidade: R$XXX,XX`,
+      modulos: `Os módulos são: \n${bullet} Tecnologia da informação; \n${bullet} Programação de Sistemas; \n${bullet} Análise de Sitemas; \n${bullet} Desenvolvimento de Sistemas para celulares; \n${bullet}  Programação Front-end; \n${bullet} Programação back-end; \n${bullet} Administração de Redes; \n${bullet} Qualidade de Software.`,
+    },
+
+    radio: {
+      title: "Técnico em Radiologia",
+      info: `\nCarga horária: 1200 horas, equivalentes a 2 anos de aulas. \nModalidade: 20% online e 80% presencial. \nQuantidade de módulos: 8, totalizando 16 disciplinas. \nValor da mensalidade: R$XXX,XX`,
+      modulos: `Os módulos são: \n${bullet} Tecnologia da informação; \n${bullet} Programação de Sistemas; \n${bullet} Análise de Sitemas; \n${bullet} Desenvolvimento de Sistemas para celulares; \n${bullet}  Programação Front-end; \n${bullet} Programação back-end; \n${bullet} Administração de Redes; \n${bullet} Qualidade de Software.`,
+    },
+
+    seg: {
+      title: "Técnico em Segurança do Trabalho",
+      info: `\nCarga horária: 1200 horas, equivalentes a 2 anos de aulas. \nModalidade: 20% online e 80% presencial. \nQuantidade de módulos: 8, totalizando 16 disciplinas. \nValor da mensalidade: R$XXX,XX`,
+      modulos: `Os módulos são: \n${bullet} Tecnologia da informação; \n${bullet} Programação de Sistemas; \n${bullet} Análise de Sitemas; \n${bullet} Desenvolvimento de Sistemas para celulares; \n${bullet}  Programação Front-end; \n${bullet} Programação back-end; \n${bullet} Administração de Redes; \n${bullet} Qualidade de Software.`,
+    },
+
+    enf: {
+      title: "Técnico em Enfermagem",
+      info: `\nCarga horária: 1680 horas, equivalentes a 2 anos de aulas (480 correspondem a estágio obrigatório). \nModalidade: 20% online e 80% presencial. \nQuantidade de módulos: 8, totalizando 16 disciplinas. \nValor da mensalidade: R$XXX,XX`,
+      modulos: `Os módulos são: \n${bullet}Enfermagem na atenção à saúde do adulto; \n${bullet} Enfermagem na atenção domiciliar; \n${bullet} Enfermagem na clínica cirúrgica; \n${bullet} Enfermagem na saúde coletiva; \n${bullet} Enfermagem na saúde da mulher do homem, da criança e do adolescente; \n${bullet} Assistência ao paciente crítico adulto; \n${bullet} Assistência ao paciente crítico neonatal e pediátrico; \n${bullet} Enfermagem na qualidade e segurança do paciente.`,
+    }
   };
 
   console.log(req.body);
