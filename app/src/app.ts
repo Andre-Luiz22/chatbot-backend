@@ -55,18 +55,18 @@ app.post("/", (req: Request, res: Response) => {
   function displayCursoInfo(agent: WebhookClient) {
     const curso = agent.parameters["cursos"];
 
-    // if(!curso) {
-    //   agent.add("Me diga sobre qual curso você deseja mais informações")
-    // } else {
-    //   agent.add(cursosInfo[curso]);
-    // }
+    if(!curso) {
+      agent.add("Me diga sobre qual curso você deseja mais informações")
+    } else {
+      agent.add(cursosInfo[curso]);
+    }
 
     agent.add(new Card({
       title : "Titulo teste",
       text : "lorem lorem lorem lorem lorem lorem lorem",
       subtitle: "teste",
-      buttonText : "clique",
-      buttonUrl : "https://cloud.google.com/dialogflow/es/docs/intents-rich-messages?hl=pt-br"
+      buttonText : "voltar para menu",
+      buttonUrl : "menu"
     }));
   }
 
