@@ -26,7 +26,11 @@ app.post("/", (req: Request, res: Response) => {
   }
 
   const cursosInfo = {
-    "ads" : "O **Técnico em Desenvolviemnto de Sistemas** possui uma carga horária de XXXhoras, equivalentes a 2 anos de aulas 20% online e 80% presenciais, com 8 módulos, 16 disciplinas. Esses módulos são: Tecnologia da informação, Programação de Sistemas, Análise de Sitemas, Desenvolvimento de Sistemas para celulares, Programação Front-end, Programação back-end, Administração de Redes e Qualidade de Software."
+    "ads" : "O <b>Técnico em Desenvolviemnto de Sistemas</b> possui uma carga horária de 1200 horas, equivalentes a 2 anos de aulas 20% online e 80% presenciais, com 8 módulos, 16 disciplinas. \nEsses módulos são: \nTecnologia da informação, Programação de Sistemas, Análise de Sitemas, Desenvolvimento de Sistemas para celulares, Programação Front-end, Programação back-end, Administração de Redes e Qualidade de Software.",
+
+    "enf" : "O <b>Técnico em Enfermagem</b> possui uma carga horária de 1680 horas, equivalentes a 2 anos de aulas 20% online e 80% presenciais, com 8 módulos, 16 disciplinas. Dessa carga horária, 480 horas correspondem a estágios obrigatórios para a formação do aluno.\nOs módulos presentes são: \nEnfermagem na atenção à saúde do adulto, Enfermagem na atenção domiciliar, Enfermagem na clínica cirúrgica, Enfermagem na saúde coletiva, Enfermagem na saúde da mulher, do homem, da criança e do adolescente, Assistência ao paciente crítico adulto, Assistência ao paciente crítico neonatal e pediátrico e Enfermagem na qualidade e segurança do paciente."
+
+    
   }
 
   console.log(req.body);
