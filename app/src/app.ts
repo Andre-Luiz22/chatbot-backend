@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import morgan from "morgan";
-import { WebhookClient } from "dialogflow-fulfillment";
+import { WebhookClient, Card } from "dialogflow-fulfillment";
 dotenv.config();
 
 export const app = express();
@@ -26,9 +26,9 @@ app.post("/", (req: Request, res: Response) => {
   }
 
   const cursosInfo = {
-    "ads" : "O <b>Técnico em Desenvolviemnto de Sistemas</b> possui uma carga horária de 1200 horas, equivalentes a 2 anos de aulas 20% online e 80% presenciais, com 8 módulos, 16 disciplinas. \nEsses módulos são: \nTecnologia da informação, Programação de Sistemas, Análise de Sitemas, Desenvolvimento de Sistemas para celulares, Programação Front-end, Programação back-end, Administração de Redes e Qualidade de Software.",
+    "ads" : "O Técnico em Desenvolviemnto de Sistemas possui uma carga horária de 1200 horas, equivalentes a 2 anos de aulas 20% online e 80% presenciais, com 8 módulos, 16 disciplinas. \nEsses módulos são: \n${bullet} Tecnologia da informação; \n${bullet} Programação de Sistemas; \n${bullet} Análise de Sitemas; \n${bullet} Desenvolvimento de Sistemas para celulares; \n${bullet} Programação Front-end; \n${bullet} Programação back-end; \n${bullet} Administração de Redes; \n${bullet} Qualidade de Software.",
 
-    "enf" : "O <b>Técnico em Enfermagem</b> possui uma carga horária de 1680 horas, equivalentes a 2 anos de aulas 20% online e 80% presenciais, com 8 módulos, 16 disciplinas. Dessa carga horária, 480 horas correspondem a estágios obrigatórios para a formação do aluno.\nOs módulos presentes são: \nEnfermagem na atenção à saúde do adulto, Enfermagem na atenção domiciliar, Enfermagem na clínica cirúrgica, Enfermagem na saúde coletiva, Enfermagem na saúde da mulher, do homem, da criança e do adolescente, Assistência ao paciente crítico adulto, Assistência ao paciente crítico neonatal e pediátrico e Enfermagem na qualidade e segurança do paciente."
+    "enf" : "O Técnico em Enfermagem possui uma carga horária de 1680 horas, equivalentes a 2 anos de aulas 20% online e 80% presenciais, com 8 módulos, 16 disciplinas. Dessa carga horária, 480 horas correspondem a estágios obrigatórios para a formação do aluno.\nOs módulos presentes são: \nEnfermagem na atenção à saúde do adulto, Enfermagem na atenção domiciliar, Enfermagem na clínica cirúrgica, Enfermagem na saúde coletiva, Enfermagem na saúde da mulher, do homem, da criança e do adolescente, Assistência ao paciente crítico adulto, Assistência ao paciente crítico neonatal e pediátrico e Enfermagem na qualidade e segurança do paciente."
 
     
   }
@@ -55,11 +55,19 @@ app.post("/", (req: Request, res: Response) => {
   function displayCursoInfo(agent: WebhookClient) {
     const curso = agent.parameters["cursos"];
 
-    if(!curso) {
-      agent.add("Me diga sobre qual curso você deseja mais informações")
-    } else {
-      agent.add(cursosInfo[curso]);
-    }
+    // if(!curso) {
+    //   agent.add("Me diga sobre qual curso você deseja mais informações")
+    // } else {
+    //   agent.add(cursosInfo[curso]);
+    // }
+
+    agent.add(new Card({
+      title : "Titulo teste",
+      text : "lorem lorem lorem lorem lorem lorem lorem",
+      subtitle: "teste",
+      buttonText : "clique",
+      buttonUrl : "https://cloud.google.com/dialogflow/es/docs/intents-rich-messages?hl=pt-br"
+    }));
   }
 
   let intentMap = new Map();
