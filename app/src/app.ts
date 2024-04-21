@@ -71,9 +71,15 @@ app.post("/", (req: Request, res: Response) => {
     }
   }
 
+  function displayModulos(agent: WebhookClient) {
+    const curso = agent.parameters["cursos"];
+    agent.add(cursosInfo[curso]["modulos"]);
+  }
+
   let intentMap = new Map();
   intentMap.set("conhecerCursos - yes", displayCursos);
   intentMap.set("conhecerCursosInfoDireta", displayCursosDireta);
   intentMap.set("cursoInfo", displayCursoInfo);
+  intentMap.set("verModulos", displayModulos);
   agent.handleRequest(intentMap);
 });
