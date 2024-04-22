@@ -21,7 +21,7 @@ app.use(morgan("dev"));
 app.post("/", (req: Request, res: Response) => {
   const cursos = {
     tecnologia: `Em tecnologia, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \n${bullet} Desenvolvimento de Sistemas.\nPosso te dar mais detalhes sobre um curso, é só me dizer qual!`,
-    gestao: `Em gestão, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \n${bullet} Administração; \n Recursos Humanos; \n Segurança do Trabalho.\nPosso te dar mais detalhes sobre um curso, é só me dizer qual!`,
+    gestao: `Em gestão, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \n${bullet} Administração; \n ${bullet} Recursos Humanos; \n${bullet} Segurança do Trabalho.\nPosso te dar mais detalhes sobre um curso, é só me dizer qual!`,
     saude: `Em saúde, as unidades de BH da Proz ofertam os seguintes cursos técnicos: \n${bullet} Enfermagem; \n${bullet} Radiologia; \n${bullet} Estética;\nPosso te dar mais detalhes sobre um curso, é só me dizer qual!`,
   };
 
